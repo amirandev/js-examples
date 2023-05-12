@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #FFF;
+      color: #000;
+    }
+
+    body.dark-mode {
+      background-color: #333;
+      color: #FFF;
+    }
+
+    .toggle-label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <label class="toggle-label" for="dark-mode-toggle">Dark Mode:</label>
+  <input type="checkbox" id="dark-mode-toggle" onchange="toggleDarkMode()" />
+
+  <script>
+    const darkModeToggle = document.getElementById('dark-mode-toggle');
+    const body = document.body;
+
+    // Check the user's preference from localStorage
+    const isDarkMode = localStorage.getItem('darkMode') === 'true';
+    darkModeToggle.checked = isDarkMode;
+    if (isDarkMode) {
+      body.classList.add('dark-mode');
+    }
+
+    // Toggle dark mode when the checkbox is changed
+    function toggleDarkMode() {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('darkMode', darkModeToggle.checked);
+    }
+  </script>
+</body>
+</html>
