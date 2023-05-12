@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+    function postData() {
+      const data = {
+        name: 'John Doe',
+        email: 'johndoe@example.com'
+      };
+
+      axios.post('https://your-api-endpoint.com/endpoint', data)
+        .then(response => {
+          console.log(response.data);
+          alert('Data posted successfully!');
+        })
+        .catch(error => {
+          console.error(error);
+          alert('An error occurred while posting the data.');
+        });
+    }
+  </script>
+</head>
+<body>
+  <button onclick="postData()">Post Data</button>
+</body>
+</html>
