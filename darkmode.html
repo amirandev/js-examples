@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dark Mode Example</title>
+  <style>
+    body {
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s ease;
+    }
+    
+    body.dark-mode {
+      background-color: #333;
+      color: white;
+    }
+    
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    
+    .toggle-label {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dark Mode Example</h1>
+  
+  <div class="toggle-container">
+    <label for="dark-mode-toggle" class="toggle-label">Dark Mode:</label>
+    <input type="checkbox" id="dark-mode-toggle" />
+  </div>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const darkModeToggle = document.getElementById("dark-mode-toggle");
+      const body = document.body;
+
+      // Check if dark mode preference is saved in localStorage
+      const darkModeEnabled = localStorage.getItem("darkModeEnabled");
+
+      if (darkModeEnabled === "true") {
+        enableDarkMode();
+        darkModeToggle.checked = true;
+      }
+
+      // Toggle dark mode
+      function toggleDarkMode() {
+        const isDarkModeEnabled = body.classList.contains("dark-mode");
+        if (isDarkModeEnabled) {
+          body.classList.remove("dark-mode");
+          localStorage.setItem("darkModeEnabled", "false");
+        } else {
+          body.classList.add("dark-mode");
+          localStorage.setItem("darkModeEnabled", "true");
+        }
+      }
+
+      // Add click event listener to toggle dark mode
+      darkModeToggle.addEventListener("click", toggleDarkMode);
+    });
+  </script>
+</body>
+</html>
